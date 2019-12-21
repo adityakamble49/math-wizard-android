@@ -10,5 +10,6 @@
     <string name="developer_country">United States</string>
     <string name="view_portfolio">View Portfolio</string>
     <string name="license">License</string>
+    <string name="draw_math_symbol">Draw Math Symbol</string>
 
 </resources>
