@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Math Wizard</string>
+
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="changelog">Changelog</string>
+    <string name="about_math_wizard">About Math Wizard</string>
+    <string name="developer">Developer</string>
+    <string name="developer_name">Aditya Kamble</string>
+    <string name="developer_country">United States</string>
+    <string name="view_portfolio">View Portfolio</string>
+    <string name="license">License</string>
+
 </resources>
