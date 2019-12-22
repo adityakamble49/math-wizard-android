@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         // Setup Clear Canvas FAB
         fab_reset_canvas.setOnClickListener {
             draw_view?.clearCanvas()
-            math_symbol_predicted.setText(R.string.draw_math_symbol)
+            tv_math_symbol_predicted.setText(R.string.draw_math_symbol)
         }
 
         draw_view?.setOnTouchListener { _, event ->
@@ -61,7 +61,12 @@ class MainActivity : AppCompatActivity() {
         val drawnImageBitmap = draw_view?.getBitmap()
 
         if (drawnImageBitmap != null && mathSymbolClassifier.isInitialized) {
-            mathSymbolClassifier.classify(drawnImageBitmap)
+            mathSymbolClassifier.classifyInBackground(drawnImageBitmap)
+                .addOnSuccessListener { resultText -> tv_math_symbol_predicted?.text = resultText }
+                .addOnFailureListener { e ->
+                    tv_math_symbol_predicted?.text = "Classification Error"
+                    Log.e(TAG, "Error classifying drawing.", e)
+                }
         }
     }
 
@@ -75,5 +80,10 @@ class MainActivity : AppCompatActivity() {
             R.id.action_about -> startActivity(Intent(this, AboutActivity::class.java))
         }
         return true
+    }
+
+    override fun onDestroy() {
+        mathSymbolClassifier.closeClassifier()
+        super.onDestroy()
     }
 }

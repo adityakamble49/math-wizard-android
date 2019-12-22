@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/main_toolbar" />
 
     <TextView
-        android:id="@+id/math_symbol_predicted"
+        android:id="@+id/tv_math_symbol_predicted"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
