@@ -19,10 +19,10 @@ class MathSymbolClassifier(private val context: Context) {
 
     companion object {
         private const val TAG = "MathSymbolClassifier"
-        private const val MODEL_FILE = "model_math_symbol.tflite"
+        private const val MODEL_FILE = "math_symbols_model.tflite"
         private const val FLOAT_TYPE_SIZE = 4
         private const val PIXEL_SIZE = 1
-        private const val OUTPUT_CLASSES_COUNT = 82
+        private const val OUTPUT_CLASSES_COUNT = 29
     }
 
     private var interpreter: Interpreter? = null
