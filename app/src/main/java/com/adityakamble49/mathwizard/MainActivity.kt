@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.adityakamble49.mathwizard.classifier.MathSymbolClassifier
+import com.adityakamble49.mathwizard.utils.CustomFileUtils
+import com.google.android.gms.tasks.OnSuccessListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val mathSymbolClassifier = MathSymbolClassifier(this)
+    private lateinit var RESULT_MAP: Map<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             draw_view?.clearCanvas()
             tv_math_symbol_predicted.setText(R.string.draw_math_symbol)
         }
+
+        // Setup Result Map
+        RESULT_MAP =
+            CustomFileUtils.jsonToMap(CustomFileUtils.loadJSONFromAsset(this))
 
         draw_view?.setOnTouchListener { _, event ->
             draw_view?.onTouchEvent(event)
@@ -62,7 +69,9 @@ class MainActivity : AppCompatActivity() {
 
         if (drawnImageBitmap != null && mathSymbolClassifier.isInitialized) {
             mathSymbolClassifier.classifyInBackground(drawnImageBitmap)
-                .addOnSuccessListener { resultText -> tv_math_symbol_predicted?.text = resultText }
+                .addOnSuccessListener { resultText ->
+                    tv_math_symbol_predicted?.text = RESULT_MAP[resultText]
+                }
                 .addOnFailureListener { e ->
                     tv_math_symbol_predicted?.text = "Classification Error"
                     Log.e(TAG, "Error classifying drawing.", e)
