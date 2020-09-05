@@ -11,5 +11,8 @@
     <string name="view_portfolio">View Portfolio</string>
     <string name="license">License</string>
     <string name="draw_math_symbol">Draw a Math Symbol</string>
+    <string name="credits">Credits</string>
+    <string name="credit_name_app_icon">Freepik</string>
+    <string name="credit_description_app_icon">App icon designed by Freepik</string>
 
 </resources>

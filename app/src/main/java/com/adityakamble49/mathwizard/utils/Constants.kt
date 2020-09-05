@@ -12,5 +12,6 @@ class Constants {
         const val PERSONAL_WEBSITE = "http://adityakamble49.com"
         const val GITHUB_PROFILE = "https://github.com/adityakamble49"
         const val TWITTER_PROFILE = "https://twitter.com/adityakamble49"
+        const val CREDIT_APP_ICON = "https://www.flaticon.com/authors/freepik"
     }
 }

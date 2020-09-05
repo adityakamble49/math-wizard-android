@@ -84,9 +84,20 @@ class AboutActivity : MaterialAboutActivity() {
             .setOnClickAction { openUrl(Constants.ReferenceUrls.PERSONAL_WEBSITE) }
             .build())
 
+        val creditsCardBuilder = MaterialAboutCard.Builder()
+        creditsCardBuilder.title(R.string.credits)
+
+        creditsCardBuilder.addItem(MaterialAboutActionItem.Builder()
+            .text(R.string.credit_name_app_icon)
+            .subText(R.string.credit_description_app_icon)
+            .showIcon(false)
+            .setOnClickAction { openUrl(Constants.ReferenceUrls.CREDIT_APP_ICON) }
+            .build())
+
         val listBuilder = MaterialAboutList.Builder()
         listBuilder.addCard(appCardBuilder.build())
         listBuilder.addCard(developerCardBuilder.build())
+        listBuilder.addCard(creditsCardBuilder.build())
 
         return listBuilder.build()
     }
